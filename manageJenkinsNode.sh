@@ -127,28 +127,28 @@ node_create()
     #{"name": "test111", "nodeDescription": "test111", "numExecutors": "1", "remoteFS": "/tmp", "labelString": "test111", "mode": "NORMAL", "": ["hudson.plugins.sshslaves.SSHLauncher", "hudson.slaves.RetentionStrategy$Always"], "launcher": {"stapler-class": "hudson.plugins.sshslaves.SSHLauncher", "$class": "hudson.plugins.sshslaves.SSHLauncher", "host": "127.0.0.1", "credentialsId": "d9axxxxxxxf5", "": "0", "sshHostKeyVerificationStrategy": {"stapler-class": "hudson.plugins.sshslaves.verifiers.KnownHostsFileKeyVerificationStrategy", "$class": "hudson.plugins.sshslaves.verifiers.KnownHostsFileKeyVerificationStrategy"}, "port": "22", "javaPath": "", "jvmOptions": "", "prefixStartSlaveCmd": "", "suffixStartSlaveCmd": "", "launchTimeoutSeconds": "", "maxNumRetries": "", "retryWaitTime": "", "tcpNoDelay": true, "workDir": ""}, "retentionStrategy": {"stapler-class": "hudson.slaves.RetentionStrategy$Always", "$class": "hudson.slaves.RetentionStrategy$Always"}, "nodeProperties": {"stapler-class-bag": "true"}, "type": "hudson.slaves.DumbSlave", "Jenkins-Crumb": "2b579e12e859c793xxxxxx8"}
 
     #below api not running in jenkins version 2.204.3, another version try
-    #RESPONSE=$(curl -L -s -o /dev/null -w "%{http_code}" -u "${USER_ID}:${TOKEN}" -H "Content-Type:application/x-www-form-urlencoded" -H "$CRUMB" -X POST -d 'json={"name":"'"${NODE_NAME}"'","nodeDescription":"'"${DESC}"'","numExecutors":"'"${EXECUTORS}"'","remoteFS":"'"$WORK_DIR"'","labelString":"'"$LABELS"'","mode":"NORMAL","":["hudson.plugins.sshslaves.SSHLauncher","hudson.slaves.RetentionStrategy$Always"],"launcher":{"stapler-class":"hudson.plugins.sshslaves.SSHLauncher","$class":"hudson.plugins.sshslaves.SSHLauncher","host":"'"$SSH_HOST"'","credentialsId":"'"$CRED_ID"'","":"0","sshHostKeyVerificationStrategy":{"stapler-class":"hudson.plugins.sshslaves.verifiers.KnownHostsFileKeyVerificationStrategy","$class":"hudson.plugins.sshslaves.verifiers.KnownHostsFileKeyVerificationStrategy"},"port":"'"$SSH_PORT"'","javaPath":"","jvmOptions":"","prefixStartSlaveCmd":"","suffixStartSlaveCmd":"","launchTimeoutSeconds":"","maxNumRetries":"","retryWaitTime":"","tcpNoDelay":true,"workDir":""},"retentionStrategy":{"stapler-class":"hudson.slaves.RetentionStrategy$Always","$class":"hudson.slaves.RetentionStrategy$Always"},"nodeProperties":{"stapler-class-bag":"true"},"type":"hudson.slaves.DumbSlave","crumb":"'"$CRUMB"'"}' "${JENKINS_URL}/computer/doCreateItem?name=${NODE_NAME}&type=hudson.slaves.DumbSlave")
+    #RESPONSE=$(curl -L -s -o /dev/null -w "%{http_code}" -u "${USER_ID}:${TOKEN}" -H "Content-Type:application/x-www-form-urlencoded" -H "$CRUMB" -X POST -d 'json={"name":"'"${NEW_NODE_NAME}"'","nodeDescription":"'"${DESC}"'","numExecutors":"'"${EXECUTORS}"'","remoteFS":"'"$WORK_DIR"'","labelString":"'"$LABELS"'","mode":"NORMAL","":["hudson.plugins.sshslaves.SSHLauncher","hudson.slaves.RetentionStrategy$Always"],"launcher":{"stapler-class":"hudson.plugins.sshslaves.SSHLauncher","$class":"hudson.plugins.sshslaves.SSHLauncher","host":"'"$SSH_HOST"'","credentialsId":"'"$CRED_ID"'","":"0","sshHostKeyVerificationStrategy":{"stapler-class":"hudson.plugins.sshslaves.verifiers.KnownHostsFileKeyVerificationStrategy","$class":"hudson.plugins.sshslaves.verifiers.KnownHostsFileKeyVerificationStrategy"},"port":"'"$SSH_PORT"'","javaPath":"","jvmOptions":"","prefixStartSlaveCmd":"","suffixStartSlaveCmd":"","launchTimeoutSeconds":"","maxNumRetries":"","retryWaitTime":"","tcpNoDelay":true,"workDir":""},"retentionStrategy":{"stapler-class":"hudson.slaves.RetentionStrategy$Always","$class":"hudson.slaves.RetentionStrategy$Always"},"nodeProperties":{"stapler-class-bag":"true"},"type":"hudson.slaves.DumbSlave","crumb":"'"$CRUMB"'"}' "${JENKINS_URL}/computer/doCreateItem?name=${NEW_NODE_NAME}&type=hudson.slaves.DumbSlave")
 
     #below api running in jenkins version 2.204.3 but crumb setting is not neccesary
-    RESPONSE=$(curl -L -s -o /dev/null -w "%{http_code}" -u "${USER_ID}:${TOKEN}" -H "Content-Type:application/x-www-form-urlencoded" -X POST -d 'json={"name":"'"${NODE_NAME}"'","nodeDescription":"'"${DESC}"'","numExecutors":"'"${EXECUTORS}"'","remoteFS":"'"$WORK_DIR"'","labelString":"'"$LABELS"'","mode":"NORMAL","":["hudson.plugins.sshslaves.SSHLauncher","hudson.slaves.RetentionStrategy$Always"],"launcher":{"stapler-class":"hudson.plugins.sshslaves.SSHLauncher","$class":"hudson.plugins.sshslaves.SSHLauncher","host":"'"$SSH_HOST"'","credentialsId":"'"$CRED_ID"'","":"0","sshHostKeyVerificationStrategy":{"stapler-class":"hudson.plugins.sshslaves.verifiers.KnownHostsFileKeyVerificationStrategy","$class":"hudson.plugins.sshslaves.verifiers.KnownHostsFileKeyVerificationStrategy"},"port":"'"$SSH_PORT"'","javaPath":"","jvmOptions":"","prefixStartSlaveCmd":"","suffixStartSlaveCmd":"","launchTimeoutSeconds":"","maxNumRetries":"","retryWaitTime":"","tcpNoDelay":true,"workDir":""},"retentionStrategy":{"stapler-class":"hudson.slaves.RetentionStrategy$Always","$class":"hudson.slaves.RetentionStrategy$Always"},"nodeProperties":{"stapler-class-bag":"true"},"type":"hudson.slaves.DumbSlave","Jenkins-Crumb":""}' "${JENKINS_URL}/computer/doCreateItem?name=${NODE_NAME}&type=hudson.slaves.DumbSlave")
+    #RESPONSE=$(curl -L -s -o /dev/null -w "%{http_code}" -u "${USER_ID}:${TOKEN}" -H "Content-Type:application/x-www-form-urlencoded" -X POST -d 'json={"name":"'"${NEW_NODE_NAME}"'","nodeDescription":"'"${DESC}"'","numExecutors":"'"${EXECUTORS}"'","remoteFS":"'"$WORK_DIR"'","labelString":"'"$LABELS"'","mode":"NORMAL","":["hudson.plugins.sshslaves.SSHLauncher","hudson.slaves.RetentionStrategy$Always"],"launcher":{"stapler-class":"hudson.plugins.sshslaves.SSHLauncher","$class":"hudson.plugins.sshslaves.SSHLauncher","host":"'"$SSH_HOST"'","credentialsId":"'"$CRED_ID"'","":"0","sshHostKeyVerificationStrategy":{"stapler-class":"hudson.plugins.sshslaves.verifiers.KnownHostsFileKeyVerificationStrategy","$class":"hudson.plugins.sshslaves.verifiers.KnownHostsFileKeyVerificationStrategy"},"port":"'"$SSH_PORT"'","javaPath":"","jvmOptions":"","prefixStartSlaveCmd":"","suffixStartSlaveCmd":"","launchTimeoutSeconds":"","maxNumRetries":"","retryWaitTime":"","tcpNoDelay":true,"workDir":""},"retentionStrategy":{"stapler-class":"hudson.slaves.RetentionStrategy$Always","$class":"hudson.slaves.RetentionStrategy$Always"},"nodeProperties":{"stapler-class-bag":"true"},"type":"hudson.slaves.DumbSlave","Jenkins-Crumb":""}' "${JENKINS_URL}/computer/doCreateItem?name=${NEW_NODE_NAME}&type=hudson.slaves.DumbSlave")
    
     #MAKE NORMAL AGENT ---------------
     #create node(slave agent), that connect to the master by self
     #below api running to jenkins version 2.204.3, crumb setting is not neccesary
-    #RESPONSE=$(curl --cookie-jar $COOKIEJAR -L -s -o /dev/null -w "%{http_code}" -u "${USER_ID}:${TOKEN}" -H "Content-Type:application/x-www-form-urlencoded" -X POST -d 'json={"name": "'"${NODE_NAME}"'", "nodeDescription":"'"$DESC"'","numExecutors":"'"$EXECUTORS"'","remoteFS":"'"$WORK_DIR"'","labelString":"'"$LABELS"'","mode":"NORMAL","":["hudson.plugins.sshslaves.SSHLauncher","hadson.slaves.RetentionStrategy$Always"],"launcher":{"stapler-class":"hudson.slaves.JNLPLauncher","$class":"hudson.slaves.JNLPLauncher"},"retentionStrategy":{"stapler-class":"hudson.slaves.RetentionStrategy$Always","$class":"hudson.slaves.RetentionStrategy$Always"},"nodeProperties":{"stapler-class-bag":"true"},"type":"hudson.slaves.DumbSlave","Jenkins-Crumb":""}' "${JENKINS_URL}/computer/doCreateItem?name=${NODE_NAME}&type=hudson.slaves.DumbSlave") 
+    RESPONSE=$(curl --cookie $COOKIEJAR -L -s -o /dev/null -w "%{http_code}" -u "${USER_ID}:${TOKEN}" -H "Content-Type:application/x-www-form-urlencoded" -X POST -d 'json={"name": "'"${NODE_NAME}"'", "nodeDescription":"'"$DESC"'","numExecutors":"'"$EXECUTORS"'","remoteFS":"'"$WORK_DIR"'","labelString":"'"$LABELS"'","mode":"NORMAL","":["hudson.plugins.sshslaves.SSHLauncher","hadson.slaves.RetentionStrategy$Always"],"launcher":{"stapler-class":"hudson.slaves.JNLPLauncher","$class":"hudson.slaves.JNLPLauncher"},"retentionStrategy":{"stapler-class":"hudson.slaves.RetentionStrategy$Always","$class":"hudson.slaves.RetentionStrategy$Always"},"nodeProperties":{"stapler-class-bag":"true"},"type":"hudson.slaves.DumbSlave","Jenkins-Crumb":""}' "${JENKINS_URL}/computer/doCreateItem?name=${NODE_NAME}&type=hudson.slaves.DumbSlave") 
 
     #create node(slave agent), that connect to the master by self
     #below api not running in jenkins version 2.204.3, another version try
-    #RESPONSE=$(curl --cookie-jar $COOKIEJAR -L -s -o /dev/null -w "%{http_code}" -u "${USER_ID}:${TOKEN}" -H "Content-Type:application/x-www-form-urlencoded" -H "$CRUMB" -X POST -d 'json={"name": "'"$NODE_NAME"'", "nodeDescription": "'"$DESC"'", "numExecutors": "'"$EXECUTORS"'","remoteFS":"'"$WORK_DIR"'","labelString":"'"$LABELS"'","mode": "NORMAL","": ["hudson.plugins.sshslaves.SSHLauncher","hudson.slaves.RetentionStrategy$Always"],"launcher":{"stapler-class":"hudson.slaves.JNLPLauncher","$class": "hudson.slaves.JNLPLauncher","retentionStrategy":{"stapler-class":"hudson.slaves.RetentionStrategy$Always","$class":"hudson.slaves.RetentionStrategy$Always"},"nodeProperties":{"stapler-class-bag":"true"},"type":"hudson.slaves.DumbSlave","crumb":"'"$CRUMB"'"}' "${JENKINS_URL}/computer/doCreateItem?name=${NODE_NAME}&type=hudson.slaves.DumbSlave")
+    #RESPONSE=$(curl --cookie $COOKIEJAR -L -s -o /dev/null -w "%{http_code}" -u "${USER_ID}:${TOKEN}" -H "Content-Type:application/x-www-form-urlencoded" -H "$CRUMB" -X POST -d 'json={"name": "'"$NODE_NAME"'", "nodeDescription": "'"$DESC"'", "numExecutors": "'"$EXECUTORS"'","remoteFS":"'"$WORK_DIR"'","labelString":"'"$LABELS"'","mode": "NORMAL","": ["hudson.plugins.sshslaves.SSHLauncher","hudson.slaves.RetentionStrategy$Always"],"launcher":{"stapler-class":"hudson.slaves.JNLPLauncher","$class": "hudson.slaves.JNLPLauncher","retentionStrategy":{"stapler-class":"hudson.slaves.RetentionStrategy$Always","$class":"hudson.slaves.RetentionStrategy$Always"},"nodeProperties":{"stapler-class-bag":"true"},"type":"hudson.slaves.DumbSlave","crumb":"'"$CRUMB"'"}' "${JENKINS_URL}/computer/doCreateItem?name=${NODE_NAME}&type=hudson.slaves.DumbSlave")
 
     if [[ $RESPONSE == "200" ]]; then
       echo "$NODE_NAME node make Success"
     else
-      echo "$NODE_NAME node make failed, response code: [$RESPONSE]"
+      echo "$NODE_NAME node make failed, response code: [${RESPONSE}]"
       exit 1
     fi
 
-    RESULT=$(curl -s -u "${USER_ID}:${TOKEN}" "${JENKINS_URL}"/computer/${NEW_NODE_NAME}/ | grep 'command' | awk -F"</pre>" '{print $1}' | awk -F"</a>" '{print $2}')
+    RESULT=$(curl -s -u "${USER_ID}:${TOKEN}" ''${JENKINS_URL}/computer/${NEW_NODE_NAME}/ | grep 'command' | awk -F"</pre>" '{ print $1 }' | awk -F"</a>" '{ print $2 }')
     echo "${RESULT}" | sed 's/^ //' | sed 's/"//g' | tee -a $RESULT_FILE
     
     sleep 2
@@ -167,10 +167,10 @@ node_delete()
         NEW_NODE_NAME=${NODE_NAME}-${START_NUMBER}
 
         # old version jenkins is crumb required!! 
-        #RESULT=$(curl --cookie $COOKIEJAR -L -s -o /dev/null -w "%{http_code}" -u "${USER_ID}:${TOKEN}" -H "Content-Type:application/x-www-form-urlencoded" -H "$CRUMB" -X POST "${JENKINS_URL}/computer/${NODE_NAME}/doDelete")
+        #RESULT=$(curl --cookie $COOKIEJAR -L -s -o /dev/null -w "%{http_code}" -u "${USER_ID}:${TOKEN}" -H "Content-Type:application/x-www-form-urlencoded" -H "$CRUMB" -X POST ''${JENKINS_URL}/computer/${NEW_NODE_NAME}/doDelete --data '')
     
         #new version jenkins is crub not required!!
-        RESULT=$(curl --cookie $COOKIEJAR -L -s -o /dev/null -w "%{http_code}" -u "${USER_ID}:${TOKEN}" -H "Content-Type:application/x-www-form-urlencoded" -X POST "${JENKINS_URL}/computer/${NODE_NAME}/doDelete")
+        RESULT=$(curl --cookie $COOKIEJAR -L -s -o /dev/null -w "%{http_code}" -u "${USER_ID}:${TOKEN}" -H "Content-Type:application/x-www-form-urlencoded" -X POST ''${JENKINS_URL}/computer/${NEW_NODE_NAME}/doDelete --data '')
         echo $RESULT
 
         sleep 2
@@ -180,7 +180,7 @@ node_delete()
 
 node_name_update()
 {
-    CONFIGURE=$(curl -s -w "%{http_code}" -u "${USER_ID}:${TOKEN}") -H "Accept: application/xml" ${JENKINS_URL}/computer/${OLD_NODE_NAME}/config.xml)
+    CONFIGURE=$(curl -s -w "%{http_code}" -u "${USER_ID}:${TOKEN}" -H "Accept: application/xml" ${JENKINS_URL}/computer/${OLD_NODE_NAME}/config.xml)
     CODE=${CONFIGURE:(-3)}
     echo "get configure code: $CODE"
 
@@ -189,24 +189,24 @@ node_name_update()
     else
         CHAGE_DATA=${CONFIGURE:39:-3}
         #CHECK ENW HOST NAME AND OLD HOST NAME SAME
-        before_hostname=$(echo $CHAGE_DATA | sed -ne '/name/{s/.*<name>\(.*\)<\/name>.*/\1/p;q}')
+        before_hostname=$(echo $CHANGE_DATA | sed -ne '/name/{s/.*<name>\(.*\)<\/name>.*/\1/p;q;}')
         
         if [[ "${before_hostname}" == "${NEW_NODE_NAME}" ]]; then
             echo -e "\n-->>old host name and new host name is same, check new host name argument"
             usage
         fi
 
-        CHAGE_DATA2=$(echo $CHAGE_DATA | sed -e 's/'"${OLD_NODE_NAME}"'/'"${NEW_NODE_NAME}"'/g')
+        CHANGE_DATA2=$(echo $CHANGE_DATA | sed -e 's/'"${OLD_NODE_NAME}"'/'"${NEW_NODE_NAME}"'/g')
         echo "change configure data: ${CHANGE_DATA2}"
 
-        RESULT=$(curl --cookie $COOKIEJAR -L -s -o /dev/null -w "%{http_code}" -H "Content-Type:application/xml" -H "Accept: application/xml" -H "$CRUMB" -d "${CHANGE_DATA2}" -X POST ${JENKINS_URL}/computer/${OLD_NODE_NAME}/config.xml)
+        RESULT=$(curl --cookie $COOKIEJAR -L -s -o /dev/null -w "%{http_code}" -u "${USER_ID}:${TOKEN}" -H "Content-Type:application/xml" -H "Accept: application/xml" -H "$CRUMB" -d "${CHANGE_DATA2}" -X POST ${JENKINS_URL}/computer/${OLD_NODE_NAME}/config.xml)
 
-        if [[ $RESPONSE == "200" ]]; then
+        if [[ ${RESULT} == "200" ]]; then
             echo "${OLD_NODE_NAME} --> ${NEW_NODE_NAME} change success"
-            RESULT=$(curl -s -u "${USER_ID}:${TOKEN}" "${JENKINS_URL}"/computer/${NEW_NODE_NAME}/ | grep 'command' | awk -F"</pre>" '{print $1}' | awk -F"</a>" '{print $2}')
+            RESULT=$(curl -s -u "${USER_ID}:${TOKEN}" ''${JENKINS_URL}/computer/${NEW_NODE_NAME}/ | grep 'command' | awk -F"</pre>" '{print $1}' | awk -F"</a>" '{print $2}')
             echo "${RESULT}" | sed 's/^ //' | sed 's/"//g' | tee -a $RESULT_FILE
         else
-            echo "$OLD_NODE_NAME --> ${NEW_NODE_NAME} change failed"
+            echo "${OLD_NODE_NAME} --> ${NEW_NODE_NAME} change failed"
         
         fi
     fi
